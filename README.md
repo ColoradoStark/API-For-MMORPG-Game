@@ -1,7 +1,12 @@
 # API For an Asynchronous MMORPG Game
-A very simple REST API that will return JSON objects.  It is written using the slim framework.  The code will set up a MySQL database with some basic player data for a turn based fantasy MMO.  It has basic CRUD functionality.
- 
+A very simple REST API that will return JSON objects.  
 
+The code will:
+
+ Setup a MySQL database table with player data parameters for an MMORPG
+ Populate the database with test records
+ Allow clients of the API to Create, Read, Update and Delete player data
+ 
 This repository is intended to be used with a server deployed by this wrapper: https://github.com/ColoradoStark/API-Server-Wrapper
 
 Instructions:  
