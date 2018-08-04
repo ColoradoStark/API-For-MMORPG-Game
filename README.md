@@ -1,5 +1,5 @@
 # API For an Asynchronous MMORPG Game
-A very simple REST API that will return JSON objects.  
+A very simple REST API using the Slim Framework that will return JSON objects.  
 
 The code will:
 
