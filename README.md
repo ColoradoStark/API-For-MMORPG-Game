@@ -1,6 +1,6 @@
 # API For an Asynchronous MMORPG Game
 A very simple CRUD API using the slim framework.  It sets up a DB some basic player data for a turn based fantasy MMO.
-And includes the minimum viable functionality to Create, Read, Update and Delete player data. 
+ 
 
 This repository is intended to be used with a server deployed by this wrapper: https://github.com/ColoradoStark/API-Server-Wrapper
 
