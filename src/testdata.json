@@ -4,10 +4,14 @@
     "class":"fighter"
 }
 
+{
+    "email":"test@test.com",
+    "password":"mypassword"
+}
 //Update
 {
     "playername":"Tecumseh",
-    "class":"fighter", 
+    "playerclass":"fighter", 
     "weapon":"",
     "weaponelement":"",
     "playerlevel":2,

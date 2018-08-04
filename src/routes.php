@@ -14,6 +14,21 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
+////////////////////////////////////////////////////////////////////////////
+//Login 
+////////////////////////////////////////////////////////////////////////////
+$app->post('/user/login', function(Request $request, Response $response){
+    $email = $request->getParam('email');
+    $password = $request->getParam('password');
+
+    $myObj->id = "777";
+    $myObj->name = "Colorado Stark";
+
+    $myJSON = json_encode($myObj);
+
+    echo $myJSON;
+});
+
 ///////////////////////////////////////////////////////////////////////
 // Create
 ///////////////////////////////////////////////////////////////////////
@@ -33,7 +48,7 @@ $app->post('/api/addnewplayer', function(Request $request, Response $response){
         $stmt->bindParam(':playername', $playername);
         $stmt->bindParam(':class',  $class);
         $stmt->execute();
-        echo '{"notice": {"text": "Customer Added"}';
+        echo '{"notice": {"text": "Player Added"}';
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
@@ -71,7 +86,7 @@ $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $respo
         $stmt = $db->query($sql);
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo json_encode($players);
+        echo json_encode($players[0]);
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
@@ -84,7 +99,7 @@ $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $respo
 $app->put('/api/updateplayer/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
     $playername = $request->getParam('playername');
-    $class = $request->getParam('class');
+    $playerclass = $request->getParam('playerclass'); 
     $weapon = $request->getParam('weapon');
     $weaponelement = $request->getParam('weaponelement');
     $playerlevel = $request->getParam('playerlevel');
@@ -98,7 +113,7 @@ $app->put('/api/updateplayer/{id}', function(Request $request, Response $respons
     $constitution = $request->getParam('constitution');
     $sql = "UPDATE Players SET
 				playername 	  = :playername,
-				class   	  = :class,
+				playerclass   = :playerclass,
                 weapon		  = :weapon,
                 weaponelement = :weaponelement,
                 playerlevel	  = :playerlevel,
@@ -118,7 +133,7 @@ $app->put('/api/updateplayer/{id}', function(Request $request, Response $respons
         $db = $db->connect();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':playername',    $playername);
-        $stmt->bindParam(':class',         $class);
+        $stmt->bindParam(':playerclass',   $playerclass);
         $stmt->bindParam(':weapon',        $weapon);
         $stmt->bindParam(':weaponelement', $weaponelement);
         $stmt->bindParam(':playerlevel',   $playerlevel);
@@ -131,7 +146,7 @@ $app->put('/api/updateplayer/{id}', function(Request $request, Response $respons
         $stmt->bindParam(':intelligence',  $intelligence);
         $stmt->bindParam(':constitution',  $constitution);
         $stmt->execute();
-        echo '{"notice": {"text": "Customer Updated"}';
+        echo '{"notice": {"text": "Player Updated"}';
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
