@@ -1,0 +1,23 @@
+//Create
+{
+    "playername":"Tecumseh",
+    "class":"fighter"
+}
+
+//Update
+{
+    "playername":"Tecumseh",
+    "class":"fighter", 
+    "weapon":"",
+    "weaponelement":"",
+    "playerlevel":2,
+    "weaponlevel":0,
+    "hp":100,
+    "mana":20,
+    "gold":150,
+    "strength":9,
+    "dexterity":9,
+    "intelligence":8,
+    "constitution":10
+}
+
