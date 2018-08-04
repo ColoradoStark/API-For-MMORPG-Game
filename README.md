@@ -9,6 +9,7 @@ Instructions:
 2. Replace the 2 directories titled ../API/public/ and ../API/src/ with the directories in this repository
 3. Initialize the database by visiting the following URL: 127.0.0.1:8080/dbsetup.php
 
-that is all you need
+------------------------------------------------------------------------------------------------------
 
-to test that the API is working as expected visit the following URL 127.0.0.1:8080/api/getallplayers
+After you have set everything up, to test that the API is working as expected 
+visit the following URL 127.0.0.1:8080/api/getallplayers
