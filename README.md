@@ -3,11 +3,13 @@ A very simple REST API that will return JSON objects.
 
 The code will:
 
- Setup a MySQL database table with player data parameters for an MMORPG
+ a. Setup a MySQL database table with player data parameters for an MMORPG
  
- Populate the database with test records
+ b. Populate the database with test records
  
- Allow clients of the API to Create, Read, Update and Delete player data
+ c. Allow clients of the API to Create, Read, Update and Delete
+ 
+ d. Allow clients to make queries for matchmaking
  
  
  
