@@ -1,11 +1,11 @@
 # API For an Asynchronous MMORPG Game
-A very simple REST API using the Slim Framework for PHP that will return JSON objects.  
+A very simple REST API using the Slim Framework for PHP that will return JSON objects.   
 
 The code will:
 
- a. Setup a MySQL database table with player data parameters for an MMORPG
+ a. Automatically setup a MySQL database table with player data parameters for an MMORPG
  
- b. Populate the database with test records
+ b. Automatically populate the database with test records
  
  c. Allow clients of the API to Create, Read, Update and Delete
  
