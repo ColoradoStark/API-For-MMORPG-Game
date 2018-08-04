@@ -33,7 +33,7 @@ try {
     $sql = "CREATE TABLE Players (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
     playername VARCHAR(30) NOT NULL,
-    class ENUM('fighter', 'wizard', 'healer', 'archer'),
+    playerclass ENUM('fighter', 'wizard', 'healer', 'archer'),
     weapon VARCHAR(30),
     weaponelement ENUM('none', 'ice', 'fire', 'earth', 'dark'),
     playerlevel INT UNSIGNED NOT NULL DEFAULT 0,
@@ -69,7 +69,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO Players (playername, class, playerlevel)
+    $sql = "INSERT INTO Players (playername, playerclass, playerlevel)
     VALUES ('Geronimo', 'archer', '66'),
     ('Sitting Bull', 'fighter', '21'),
     ('Pocahontas', 'healer', '33'),
