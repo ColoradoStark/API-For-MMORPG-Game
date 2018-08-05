@@ -100,8 +100,9 @@ $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $respo
 // Update
 ///////////////////////////////////////////////////////////////////////
 
-$app->put('/api/updateplayer/{id}', function(Request $request, Response $response){
-    $id = $request->getAttribute('id');
+$app->put('/api/updateplayer', function(Request $request, Response $response){
+    //$id = $request->getAttribute('id');
+    $id = $request->getParam('id');
     $playername = $request->getParam('playername');
     $playerclass = $request->getParam('playerclass'); 
     $weapon = $request->getParam('weapon');
@@ -150,7 +151,11 @@ $app->put('/api/updateplayer/{id}', function(Request $request, Response $respons
         $stmt->bindParam(':intelligence',  $intelligence);
         $stmt->bindParam(':constitution',  $constitution);
         $stmt->execute();
-        echo '{"notice": {"text": "Player Updated"}';
+        
+        $Response->id = $id;
+        $Response->message = "Success";
+        $JsonResponse = json_encode($Response);
+        echo $JsonResponse;
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
