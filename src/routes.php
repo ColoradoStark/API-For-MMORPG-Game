@@ -48,7 +48,11 @@ $app->post('/api/createnewplayer', function(Request $request, Response $response
         $stmt->bindParam(':playername', $playername);
         $stmt->bindParam(':playerclass',  $playerclass);
         $stmt->execute();
-        echo '{"notice": {"text": "Player Added"}';
+        //echo '{"notice": {"text": "Player Added"}';
+        $Response->id = $db->lastInsertId();
+        $Response->message = "Success";
+        $JsonResponse = json_encode($Response);
+        echo $JsonResponse;
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
@@ -152,7 +156,7 @@ $app->put('/api/updateplayer/{id}', function(Request $request, Response $respons
     }
 });
 
-$app->delete('/api/deleteplayer/{id}', function(Request $request, Response $response){
+$app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
     $sql = "DELETE FROM Players WHERE id = $id";
     try{
@@ -163,7 +167,11 @@ $app->delete('/api/deleteplayer/{id}', function(Request $request, Response $resp
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $db = null;
-        echo '{"notice": {"text": "Customer Deleted"}';
+        //echo '{"notice": {"text": "Customer Deleted"}';
+        $Response->id = $id;
+        $Response->message = "Success";
+        $JsonResponse = json_encode($Response);
+        echo $JsonResponse;
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
