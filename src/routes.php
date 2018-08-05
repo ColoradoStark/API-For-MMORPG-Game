@@ -33,12 +33,12 @@ $app->post('/user/login', function(Request $request, Response $response){
 // Create
 ///////////////////////////////////////////////////////////////////////
 
-$app->post('/api/addnewplayer', function(Request $request, Response $response){
+$app->post('/api/createnewplayer', function(Request $request, Response $response){
     $playername = $request->getParam('playername');
-    $class = $request->getParam('class');
+    $playerclass = $request->getParam('playerclass');
 
-    $sql = "INSERT INTO Players (playername, class) VALUES
-    (:playername,:class)";
+    $sql = "INSERT INTO Players (playername, playerclass) VALUES
+    (:playername,:playerclass)";
     try{
         // Get DB Object
         $db = new db();
@@ -46,7 +46,7 @@ $app->post('/api/addnewplayer', function(Request $request, Response $response){
         $db = $db->connect();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':playername', $playername);
-        $stmt->bindParam(':class',  $class);
+        $stmt->bindParam(':playerclass',  $playerclass);
         $stmt->execute();
         echo '{"notice": {"text": "Player Added"}';
     } catch(PDOException $e){
