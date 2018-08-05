@@ -1,5 +1,6 @@
 # API For an Asynchronous MMORPG Game
-A very simple REST API using the Slim Framework for PHP that will return JSON objects.   
+A very simple REST API using the Slim Framework for PHP that will return JSON objects.
+NOTE:  This API is fully functioning, but it does not yet have authentication security measures implemented.
 
 The code will:
 
@@ -10,7 +11,6 @@ The code will:
  c. Allow clients of the API to Create, Read, Update and Delete
  
  d. Allow clients to make queries for matchmaking
- 
  
  
 This repository is intended to be used with a server deployed by this wrapper: https://github.com/ColoradoStark/API-Server-Wrapper
