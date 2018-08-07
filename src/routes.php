@@ -88,6 +88,7 @@ $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $respo
         // Connect
         $db = $db->connect();
         $stmt = $db->query($sql);
+        $stmt->bindParam(':id', $id);
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
         echo json_encode($players[0]);
@@ -170,6 +171,7 @@ $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $
         // Connect
         $db = $db->connect();
         $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
         $db = null;
         //echo '{"notice": {"text": "Customer Deleted"}';
