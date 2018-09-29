@@ -88,6 +88,7 @@ $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $respo
         // Connect
         $db = $db->connect();
         
+	$stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id);
 	$stmt = $db->query($sql);
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
