@@ -10,11 +10,11 @@
 }
 //Update
 {
-    "id":6,
+    "id":2,
     "playername":"Tecumseh",
     "playerclass":"fighter", 
     "weapon":"",
-    "weaponelement":"",
+    "weaponelement":"dark",
     "playerlevel":2,
     "weaponlevel":0,
     "hp":100,
