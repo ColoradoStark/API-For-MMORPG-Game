@@ -23,6 +23,7 @@ $app->post('/user/login', function(Request $request, Response $response){
 
     $myObj->id = "777";
     $myObj->name = "Colorado Stark";
+    $myObj->isChanged = "true";
 
     $myJSON = json_encode($myObj);
 
