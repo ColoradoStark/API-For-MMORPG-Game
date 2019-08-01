@@ -50,7 +50,7 @@ try {
 
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "Table MyGuests created successfully";
+    echo "Table Players created successfully";
 
     $stmt = $conn->query("DESCRIBE Players");
     var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
