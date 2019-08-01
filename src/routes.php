@@ -82,15 +82,17 @@ $app->get('/api/getallplayers', function (Request $request, Response $response) 
 
 $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $response) {
     $id = $request->getattribute('id');
-    $sql = "SELECT * FROM Players WHERE id = $id";
+    $sql = "SELECT * FROM Players WHERE id = id";
     try{
         // Get DB Object
         $db = new db();
         // Connect
         $db = $db->connect();
         
+    
 	$stmt = $db->prepare($sql);
-        $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':id', $id);
+	
 	$stmt = $db->query($sql);
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
@@ -167,7 +169,7 @@ $app->put('/api/updateplayer', function(Request $request, Response $response){
 
 $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
-    $sql = "DELETE FROM Players WHERE id = $id";
+    $sql = "DELETE FROM Players WHERE id = :id";
     try{
         // Get DB Object
         $db = new db();
@@ -175,6 +177,7 @@ $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $
         $db = $db->connect();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':id', $id);
+		
         $stmt->execute();
         $db = null;
         //echo '{"notice": {"text": "Customer Deleted"}';
