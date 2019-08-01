@@ -82,18 +82,19 @@ $app->get('/api/getallplayers', function (Request $request, Response $response) 
 
 $app->get('/api/getplayerbyid/{id}', function (Request $request, Response $response) {
     $id = $request->getattribute('id');
-    $sql = "SELECT * FROM Players WHERE id = id";
+	
+    $sql = "SELECT * FROM Players WHERE id = :id";
     try{
         // Get DB Object
         $db = new db();
         // Connect
         $db = $db->connect();
         
-    
 	$stmt = $db->prepare($sql);
-    $stmt->bindParam(':id', $id);
 	
-	$stmt = $db->query($sql);
+    $stmt->bindParam(':id', $id);
+	$stmt->execute();
+		
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
         echo json_encode($players[0]);
@@ -190,5 +191,25 @@ $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $
     }
 });
 
+$app->get('/api/inject/{id}', function (Request $request, Response $response) {
+    $id = $request->getattribute('id');
+	
+    $sql = "SELECT * FROM Players WHERE id = $id";
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+        
+	$stmt = $db->prepare($sql);
+	$stmt = $db->query($sql);
+	
+        $players = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($players[0]);
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});
 
 
