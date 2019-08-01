@@ -169,7 +169,7 @@ $app->put('/api/updateplayer', function(Request $request, Response $response){
 });
 
 ///////////////////////////////////////////////////////////////////////
-// Update
+// Delete
 ///////////////////////////////////////////////////////////////////////
 
 $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $response){
