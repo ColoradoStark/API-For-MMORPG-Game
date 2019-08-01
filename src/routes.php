@@ -168,6 +168,10 @@ $app->put('/api/updateplayer', function(Request $request, Response $response){
     }
 });
 
+///////////////////////////////////////////////////////////////////////
+// Update
+///////////////////////////////////////////////////////////////////////
+
 $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
     $sql = "DELETE FROM Players WHERE id = :id";
@@ -190,6 +194,20 @@ $app->delete('/api/deleteplayerbyid/{id}', function(Request $request, Response $
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
+
+
+
+// ********************************************************************************************
+// ********************************************************************************************
+// ********************************************************************************************
+// THIS NEXT METHOD IS AN EXAMPLE OF A SQL INJECTION VULNERABILITIES
+// USING THIS IN PRODUCTION CAN EASILY LEAD TO BEING HACKED
+// DELETE THIS AFTER YOU HAVE TESTED THE EXAMPLE AND DO NOT USE
+// ********************************************************************************************
+// ********************************************************************************************
+// ********************************************************************************************
+
+
 
 $app->get('/api/inject/{id}', function (Request $request, Response $response) {
     $id = $request->getattribute('id');
