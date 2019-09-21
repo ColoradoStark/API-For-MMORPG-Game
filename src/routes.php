@@ -72,7 +72,6 @@ $app->get('/api/getallplayers', function (Request $request, Response $response) 
         $stmt = $db->query($sql);
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-		$players->isChanged = "true";
         echo json_encode($players);
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
