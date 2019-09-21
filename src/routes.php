@@ -23,7 +23,6 @@ $app->post('/user/login', function(Request $request, Response $response){
 
     $myObj->id = "777";
     $myObj->name = "Colorado Stark";
-    $myObj->isChanged = "true";
 
     $myJSON = json_encode($myObj);
 
@@ -73,6 +72,7 @@ $app->get('/api/getallplayers', function (Request $request, Response $response) 
         $stmt = $db->query($sql);
         $players = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
+		$players->isChanged = "true";
         echo json_encode($players);
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
